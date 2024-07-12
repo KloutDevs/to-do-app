@@ -5,7 +5,6 @@ import { getServerAuthSession } from "@/server/auth";
 import { api } from "@/trpc/server";
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
   const session = await getServerAuthSession();
 
   return (
@@ -40,7 +39,6 @@ export default async function Home() {
         </div>
         <div className="flex flex-col items-center gap-2">
           <p className="text-2xl text-white">
-            {hello ? hello.greeting : "Loading tRPC query..."}
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4">
@@ -56,17 +54,17 @@ export default async function Home() {
           </div>
         </div>
 
-        <CrudShowcase />
-      </div>
+{/*         <CrudShowcase />
+ */}      </div>
     </main>
   );
 }
 
 async function CrudShowcase() {
-  const session = await getServerAuthSession();
+/*   const session = await getServerAuthSession();
   if (!session?.user) return null;
 
-  const latestPost = await api.post.getLatest();
+  const latestPost = await api.section.getLatest();
 
   return (
     <div className="w-full max-w-xs">
@@ -78,5 +76,5 @@ async function CrudShowcase() {
 
       <CreatePost />
     </div>
-  );
+  ); */
 }
